@@ -1,6 +1,6 @@
 import random
 import psutil
-
+# 2차 수정
 def generate_lotto_numbers_with_cpu_usage(num_draws=10000):
     lotto_numbers_list = []
 
