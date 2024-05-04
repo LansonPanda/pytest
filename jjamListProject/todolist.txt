@@ -1,0 +1,4 @@
+ 할 일
+3. css 꾸미기
+5. 브라우저 문제가 있는 듯. 크롬에선 되고 엣지에선 안됌
+4. local storage to indexedDB change 

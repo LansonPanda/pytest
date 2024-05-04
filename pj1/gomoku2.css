@@ -1,0 +1,17 @@
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 608px;
+    /* 19 * 32px (30px 셀 + 1px 간격) */
+    height: 608px;
+    background-color: #924e05d2;
+    padding: 20px;
+    border: 2px solid #000000;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #f3a052;
+    border: 1px solid #000000;
+}

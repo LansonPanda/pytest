@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>TETRIS</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="tetris.css">
+    <script type="text/javascript" src="tetris.js"></script>
+</head>
+
+<body style="background-color: dimgray;">
+    <h1>TETRIS</h1>
+    <div class="w-c">
+        <span class="t-c">
+            <canvas id="stage" width="250px" height="500px" style="background-color:black;">
+            </canvas>
+            <span class="t-p-c">
+                <p>Next :</p>
+                <canvas id="next" width="150px" height="150px" style="background-color:black;">
+                </canvas>
+                <p>SCORE :<span id="lines"> 0</span></p>
+                <p><span id="message"></span></p>
+                <p>LEVEL :<span id="level"> 1</span></p>
+                <div class="t-p-c-padding"></div>
+                <table class="t-b-panel">
+                    <tr>
+                        <td></td>
+                        <td id="t-r-b" class="t-b">↻</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td id="t-m-l-b" class="t-b">←</td>
+                        <td id="t-f-b" class="t-b">↓</td>
+                        <td id="t-m-r-b" class="t-b">→</td>
+                    </tr>
+                </table>
+            </span>
+        </span>
+    </div>
+    <div class="scorerecord-container">
+        <span class="s-c">
+            <p id="scoreboard-panel">TOP RECORD 10</p>
+            <table id="scoreboard-table">
+        </span>
+    </div>
+    <script>
+        var tetris = new Tetris();
+        tetris.sG();
+    </script>
+</body>
+
+</html>
