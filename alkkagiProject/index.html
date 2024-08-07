@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ALKKAGI</title>
+    <style>
+        body {
+            background-color: dimgray;
+        }
+        
+        #player-turn {
+            color: white;
+        }
+        #game-container {
+            width: 600px;
+            height: 600px;
+            position: relative;
+        }
+
+        #game-board {
+            background-color: #eeb66c;
+            width: 100%;
+            height: 100%;
+            border: 2px solid black;
+            position: relative;
+        }
+        
+        .marble {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-shadow: 
+                inset -5px -5px 10px rgba(0,0,0,0.1),
+                inset 5px 5px 10px rgba(255,255,255,0.5),
+                5px 5px 10px rgba(0,0,0,0.2);
+            position: absolute;
+        }
+        
+        .marble::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+        }
+
+        #controls {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #arrow {
+            position: absolute;
+            width: 2px;
+            height: 75px;
+            background-color: red;
+            transform-origin: bottom center;
+            display: none;
+        }
+
+        #angle{
+            width: 90%;
+            border-radius: 8px;
+            outline: none;
+            accent-color: lime;
+        }
+
+        #power{
+            width: 90%;
+            border-radius: 8px;
+            outline: none;
+            accent-color: yellow;
+        }
+
+        #shoot-button{
+            margin-top: 20px;
+            width: 90%;
+            height: 40px;
+            border-radius: 8px;
+            outline: none;
+            accent-color: red;
+        }
+
+        #left-marbles {
+            color: white;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>ALKKAGI</h1>
+    <a href="../list.html" style="color: black; display: block; margin-bottom: 10px;">목록</a>
+    <div id="left-marbles"></div>
+    <div id="game-container">
+        <div id="game-board">
+            <div id="arrow"></div>
+        </div>
+        <div id="controls">
+            <div id="player-turn"></div>
+            <input type="range" id="angle" min="0" max="360" value="0">
+            <input type="range" id="power" min="1" max="300" value="1">
+            <button id="shoot-button">스페이스바!!</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

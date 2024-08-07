@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>nolaw</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body style="background-color: dimgray;">
+    <h1>nolow</h1>
+    <p style="margin-left: 10px; color: white;">new game: spacebar</p>
+    <p style="margin-left: 10px; color: white;">&#8592; z c : left move</p>
+    <p style="margin-left: 10px; color: white;">&#8594; . / : right move</p>
+
+    <div id="w-p" class="w-p">
+        <progress max="100" value="0" class="progress"></progress>
+        <span class="n-c">
+            <canvas id="stage" width="280px" height="480px">
+            </canvas>
+            <span class="n-p-c">
+                <p><span id="message"></span></p>
+                <span class="n-p-c">
+                    <p>SCORE</p>
+                    <span id="lines" style="text-align: center; color:yellow; font-weight: bold;"> 0</span>
+                    <p><span id="message"></span></p>
+                    <div class="n-p-c-p"></div>
+                </span>
+            </span>
+            <div style="background-color: #555555;">
+                <span class="s-c">
+                    <p id="scoreboard-panel">TOP RECORD 10</p>
+                    <table id="scoreboard-table">
+                </span>
+            </div>
+        </span>
+    </div>
+
+    
+    <script type="text/javascript" src="script2.js"></script>
+
+</body>
+
+</html>

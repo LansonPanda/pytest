@@ -34,6 +34,7 @@ const groupAndSortData = (data) => {
 
     data.forEach((item) => {
         groups[item.selectMenu].push(item);
+        console.log(item.selectMenu);
     });
 
     for (const groupKey in groups) {
@@ -123,6 +124,7 @@ const loadDataFromIndexedDB = () => {
         const data = event.target.result;
 
         const groups = groupAndSortData(data);
+        console.log("1");
 
         renderGroups(groups);
     };

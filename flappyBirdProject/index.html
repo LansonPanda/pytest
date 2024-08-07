@@ -1,0 +1,48 @@
+<html>
+	<head>        
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+	<body>
+		<div id="Canvas">          
+            <div id="InstructionBox" style="position: absolute; left: 50%; display:none;">
+                <div style="position: relative; left: -50%; z-index: 150; font-family:flappybird; color:white; font-size: 2vw;" class="noSelect">
+                    Click to Fly <br>
+                    Space Bar to Reset <br>
+                    "P" to Pause
+                </div>
+            </div>
+                        
+            <div style="position: absolute; left: 50%; top: 50%;">
+                <div id="CurrentScoreCard" class="noSelect">
+                    <span id="CurrentScore">0</span>
+                </div>
+            </div>
+            
+            <div style="position: absolute; left: 50%; top: 50%;">
+                <div id="LostScoreScreen" class="noSelect">
+                    <span>Score</span>
+                    <br>
+                    <span id="FinalScore">0</span>
+                    <br>
+                    <span>Best</span>
+                    <br>
+                    <span id="BestScore">0</span>
+                    <br>
+                    <button id="ResetButton" type="button" class="btn btn-warning">Reset</button>
+                </div>
+            </div>
+            
+            <div id="DebugInfo" class="noSelect"></div>
+			<div id="Birdy" style=" background-position-x: 400%;">
+			</div>
+            <div id="PauseButton" class="noSelect">
+                <span class="glyphicon glyphicon-pause"></span>
+            </div>
+		</div>
+		
+        <!-- jQuery from Google CDN -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="script.js"></script>
+	</body>
+</html>

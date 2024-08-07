@@ -1,3 +1,6 @@
+<!-- 
+    dev: Lanson_Panda
+-->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,7 +9,7 @@
     <title>군번줄</title>
     <link rel="stylesheet" href="jjamList.css">
 </head>
-<body>
+<body style="background-color: rgba(131, 139, 139, 0.63);">
     <h1>군번줄</h1>
     <span></span><br>
     <select id="select-menu" class="select-menu">
@@ -20,12 +23,12 @@
     <input id="j-date2" class="date-input" type="date">
     <input id="j1" class="j1-input" placeholder="이름을 입력하세요...">
     <button id="add-bt" class="add-bt">+</button>
-
+    <input type="file" id="fileInput" accept=".json" style="display:none"> <!-- 파일 입력 요소 추가 -->
     <div id="j-list"></div>
 
-    <script src="jjamList2.js"></script>
+    <script src="jjamList3.js"></script>
 </body>
 <footer id="footer">
-    <p style="margin-top: 100px; color: blue;">© 기동대대 군번줄</p>
+    <div style="margin-top: 100px; color: blue;">© 기동대대 군번줄</div>
 </footer>
 </html>

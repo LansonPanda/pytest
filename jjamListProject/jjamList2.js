@@ -28,6 +28,27 @@ const gASD = (data) => {
         gps[t.sM].push(t);
     });
 
+    // v2
+    const today = new Date();
+    const filterExpired = (t) => crD(new Date(t.d2)) <= 0;
+    const filterNotExpired = (t) => crD(new Date(t.d2)) > 0;
+    
+    gps['전역자'] = gps['전역자'].concat(gps['1중대'].filter(filterExpired));
+    gps['전역자'] = gps['전역자'].concat(gps['2중대'].filter(filterExpired));
+    gps['전역자'] = gps['전역자'].concat(gps['3중대'].filter(filterExpired));
+    gps['전역자'] = gps['전역자'].concat(gps['본부중대'].filter(filterExpired));
+    
+    gps['1중대'] = gps['1중대'].filter(filterNotExpired);
+    gps['2중대'] = gps['2중대'].filter(filterNotExpired);
+    gps['3중대'] = gps['3중대'].filter(filterNotExpired);
+    gps['본부중대'] = gps['본부중대'].filter(filterNotExpired);
+
+    gps['전역자'].forEach((item) => {
+        item.i = `${item.sM} 故${item.i}`;
+    });
+    //
+
+    // 그룹별로 정렬
     for (const gK in gps) {
         if (gps.hasOwnProperty(gK)) {
             const g = gps[gK];
@@ -72,7 +93,10 @@ const rG = (gps) => {
                 dD.classList.add('j-t-date2');
 
                 const rD = crD(new Date(t.d2));
-                const rT = rD >= 0 ? `${rD}일` : '전역';
+                const fD = ctD(new Date(t.d2));
+                // v2
+                const rT = rD >= 0 ? `${rD}일` : `${rD}일`;
+                //
                 const rS = document.createElement('span');
                 rS.textContent = ` | ${rT}`;
                 rS.classList.add('j-t-rT');
@@ -120,6 +144,32 @@ const LDFDB = () => {
 const ajj = (sM, d, d2, i) => {
     const iNE = (value) => value.trim() !== '';
 
+    if (i === 'tetris') {
+        window.location.href = '/tetrisProject/tetris.html';
+        return;
+    }
+
+    if (i === 'nolaw') {
+        window.location.href = '/nolaw/index.html';
+        return;
+    } 
+    
+    // v3
+    if (i === 'backup') {
+        backupData();
+        return;
+    }
+
+    if (i === 'restore') {
+        document.getElementById("fileInput").click();
+        document.getElementById("fileInput").addEventListener("change", function(event) {
+            var file = event.target.files[0];
+            restoreData(file);
+        });
+        return;
+    }
+    //
+
     if (![sM, d, d2, i].every(iNE)) {
         a.style.color = 'red';
         a.textContent = '값이 비었습니다!';
@@ -149,6 +199,72 @@ const rjj = (id) => {
     oS.delete(id);
 };
 
+const crD = (dD) => {
+    const today = new Date();
+    const rD = (dD - today) / (1000 * 60 * 60 * 24);
+    return Math.round(rD);
+};
+
+const ctD = (dD) => {
+    const today = new Date();
+    const rD = (today - dD) / (1000 * 60 * 60 * 24);
+    return Math.round(rD);
+};
+
+// v3
+function backupData() {
+    var transaction = db.transaction(["jjS"], "readonly");
+    var objectStore = transaction.objectStore("jjS");
+    var request = objectStore.getAll();
+
+    request.onsuccess = function(event) {
+        var data = event.target.result;
+        var jsonData = JSON.stringify(data);
+        var blob = new Blob([jsonData], { type: "application/json" });
+
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+
+        var today = new Date();
+        var date = today.toISOString().slice(0, 10);
+        a.download = `jjamList_${date}.json`;
+        document.body.appendChild(a);
+
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+}
+
+function restoreData(file) {
+    var reader = new FileReader();
+
+    reader.onload = function(event) {
+        var jsonData = event.target.result;
+        var data = JSON.parse(jsonData);
+
+        var transaction = db.transaction(["jjS"], "readwrite");
+        var objectStore = transaction.objectStore("jjS");
+
+        data.forEach(function(item) {
+            objectStore.add(item);
+        });
+    };
+
+    reader.readAsText(file);
+    location.reload();
+}
+
+document.getElementById("j1").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        console.log("1")
+        event.preventDefault(); // 엔터키의 기본 동작(폼 제출)을 방지
+        document.getElementById("add-bt").click(); // 버튼 클릭 이벤트 발생
+    }
+});
+//
+
 document.addEventListener('DOMContentLoaded', () => {
     const aB = document.querySelector('#add-bt');
     const sM = document.querySelector('#select-menu');
@@ -160,9 +276,3 @@ document.addEventListener('DOMContentLoaded', () => {
         ajj(sM.value, d.value, d2.value, i.value);
     });
 });
-
-const crD = (dD) => {
-    const today = new Date();
-    const rD = (dD - today) / (1000 * 60 * 60 * 24);
-    return Math.round(rD);
-};

@@ -1,0 +1,68 @@
+<span class="t-c">
+    
+    <span class="t-p-c">
+        <p>Hold :</p>
+        <canvas id="hold" width="150px" height="150px" style="background-color:black;">
+        </canvas>
+    </span>
+    
+
+class Tetis {
+    // 맨위 
+    this.hd = document.getElementById("hold");
+
+    // 변수 
+    this.holdUsed = 0;
+
+    // 키코드 추가
+    else if (e.keyCode === 67 || e.keyCode === 16) { 
+        this.hold();
+    }
+
+}
+
+cnb() {
+    // this.dnb() 아래
+    this.dhb();
+    if (this.holdUsed === 1) {
+        this.holdUsed = 0;
+    }
+}
+
+// 새로 추가
+dhb() {
+    this.clear(this.hd);
+    if (this.holdBlock != null) {
+        this.drawBlock(this.cs * 2, this.cs, this.holdBlock,
+            0, this.hd);
+    }
+}
+
+// 새로 추가
+hold() {
+    if (this.holdUsed < 1) {
+        if (this.holdBlock == null) {
+            this.holdBlock = this.cB;
+            this.nextBlock = this.grb();
+            this.cB = this.nextBlock;
+            this.bX = Math.floor(this.stw / 2 - 2);
+            this.bY = 0;
+            this.bA = 0;
+            this.dnb();
+            this.dhb();
+        } else {
+            let temp = this.cB;
+            this.cB = this.holdBlock;
+            this.holdBlock = temp;
+            this.bX = Math.floor(this.stw / 2 - 2);
+            this.bY = 0;
+            this.bA = 0;
+            this.dnb();
+            this.dhb();
+        }
+        this.refreshStage();
+        this.holdUsed += 1;
+    } else {
+        return;
+    }
+} 

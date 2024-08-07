@@ -1,0 +1,56 @@
+html {
+    touch-action: manipulation;
+}
+
+.progress {
+    margin-left: 10px;
+    width: 280px;
+    background-color: white ;
+    height: 20px;
+    border: 1px solid #ffffff;
+}
+
+.progress::-webkit-progress-value {
+    background-color: yellow; /* 진행 바의 색상 */
+}
+
+.w-p {
+    display: inline-block;
+}
+
+.n-c {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    background-color: #333333;
+}
+
+.n-p-c {
+    margin-top: 110px;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-direction: column;
+    color: white;
+    background-color: #333333;
+}
+
+.n-p-c-p {
+    flex-grow: 1;
+}
+
+.n-p-c p {
+   margin: 0;
+   padding: 0;
+}
+
+.s-c {
+    display: inline-table;
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 105px;
+    padding-bottom: 20px;
+    color: white;
+    background-color: #444444;
+
+}
