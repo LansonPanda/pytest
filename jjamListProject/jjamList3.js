@@ -67,7 +67,7 @@ const rG = (gps) => {
                 rjj(t.id);
                 LDFDB();
             });
-
+            
             giE.appendChild(iE);
         });
 
@@ -90,6 +90,11 @@ const LDFDB = () => {
 
 const ajj = (sM, d, d2, i) => {
     const iNE = (value) => value.trim() !== '';
+
+    if (i === '이순신') {
+        window.location.href = '/list.html';
+        return;
+    }
 
     if (i === 'tetris') {
         window.location.href = '/tetrisProject/tetris.html';
@@ -136,6 +141,16 @@ const ajj = (sM, d, d2, i) => {
 const rjj = (id) => {
     const ts = db.transaction(['jjS'], 'readwrite');
     const oS = ts.objectStore('jjS');
+    
+    // 삭제된 데이터와 삭제된 시간을 localstorage에 저장
+    const data = oS.get(id);
+    data.onsuccess = (event) => {
+        const deletedData = event.target.result;
+        var d= new Date();
+        const deletedTime = new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString();
+        localStorage.setItem(deletedTime, JSON.stringify(deletedData));
+    };
+
     oS.delete(id);
 };
 
@@ -207,3 +222,5 @@ document.addEventListener('DOMContentLoaded', () => {
         restoreData(event.target.files[0]);
     });
 });
+
+// 

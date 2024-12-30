@@ -203,6 +203,12 @@ function hcc(event) {
 }
 
 function ing() {
+    const SelectColor = prompt('흑: 0, 백: 1 입력하세요.', 0);
+    if (SelectColor === '1') {
+        cp = 'white';
+    }
+
+
     cbd();
     ti.className = 'turn-indicator';
     uti();
@@ -255,6 +261,7 @@ function minimax(depth, alpha, beta, isMaximizing, lastMove) {
 }
 
 function aiMove() {
+    
     const threatResponse = detectAndRespondToThreats();
 
     let bestScore = -Infinity;

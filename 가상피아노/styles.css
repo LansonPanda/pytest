@@ -1,0 +1,179 @@
+h1 {
+    border-bottom: 1px solid black;
+    padding-bottom: 2rem;
+  }
+  #keyBoard {
+      display: grid;
+      grid-template-columns: 30px 30px 15px 30px 30px 30px 30px 15px 30px 15px 30px 30px;
+      height: 250px;
+      font-size: 1px;
+      padding-bottom: 2rem;
+  }
+  #cKey{
+    padding: 0;
+    border: none;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    background: none;
+    outline:none
+  }
+  #cRHLKey {
+    display: grid; 
+    border-bottom: 1px solid black;
+  }
+  #cHKey {
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    outline:none;
+    border: none;
+  }
+  #cRKey{
+    padding: 0;
+    border: none;
+    border-right: 1px solid black;
+    background: none;
+    outline:none;
+  }
+  #dLKey{
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+  }
+  #dKey{
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    outline: none;
+  }
+  #dRHLKey {
+    display: grid;
+    border-bottom: 1px solid black;
+  }
+  #dHKey {
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border: none;
+    outline: none;
+  }
+  #dRKey {
+    background: none;
+    border: none;
+    border-right:1px solid black;
+    outline: none;
+  }
+  #eKey{
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+  }
+  #eLKey{
+    background: none;
+    border: none;
+    outline: none;
+  }
+  #fKey{
+    background: none;
+    border: none;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    outline: none;
+  }
+  #fRHLKey {
+    display: grid;
+    border-bottom: 1px solid black;
+  }
+  #fHKey {
+    border: none;
+    outline: none;
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  
+  #fRKey {
+    border: none;
+    border-right:1px solid black;
+    outline: none;
+    background: none;
+  }
+  #gKey {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: none;
+  }
+  #gRHLKey {
+    display: grid;
+    border-bottom: 1px solid black;
+  }
+  #gRKey {
+    border: none;
+    outline: none;
+    border-right:1px solid black;
+    background: none;
+  }
+  #gLKey {
+    border: none;
+    outline: none;
+    background: none;
+  }
+  #gHKey {
+    border: none;
+    outline: none;
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  
+  
+  }
+  #aKey{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    background: none;
+  }
+  #aRHLKey {
+    display: grid;
+  }
+  #aHKey {
+    border: none;
+    outline: none;
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  #aLKey {
+    border: none;
+    outline: none;
+    background: none;
+  }
+  #aRKey {
+    border: none;
+    outline: none;
+    border-right:1px solid black;
+    border-bottom: 1px solid black;
+    background: none;
+  }
+  #bLKey {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    background: none;
+  }
+  #bKey{
+    border: none;
+    outline: none;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    background: none;
+  }
+  #note {
+    width: 800;
+    height: 400;
+    overflow:scroll;
+  }

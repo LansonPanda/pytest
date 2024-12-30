@@ -1,46 +1,46 @@
-    let grid = [];
-let score = 0;
+let g = [];
+let s = 0;
 
-function initGame() {
-    grid = Array(4).fill().map(() => Array(4).fill(0));
-    score = 0;
-    addNewTile();
-    addNewTile();
-    updateGrid();
+function ig() {
+    g = Array(4).fill().map(() => Array(4).fill(0));
+    s = 0;
+    ant();
+    ant();
+    ug();
 }
 
-function addNewTile() {
-    let emptyCells = [];
+function ant() {
+    let ac = [];
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-            if (grid[i][j] === 0) {
-                emptyCells.push({i, j});
+            if (g[i][j] === 0) {
+                ac.push({i, j});
             }
         }
     }
-    if (emptyCells.length > 0) {
-        let {i, j} = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-        grid[i][j] = Math.random() < 0.9 ? 2 : 4;
-        const cellIndex = i * 4 + j;
-        const cell = document.querySelectorAll('.cell')[cellIndex];
+    if (ac.length > 0) {
+        let {i, j} = ac[Math.floor(Math.random() * ac.length)];
+        g[i][j] = Math.random() < 0.9 ? 2 : 4;
+        const ci = i * 4 + j;
+        const cell = document.querySelectorAll('.cell')[ci];
         cell.classList.add('new-tile');
         setTimeout(() => cell.classList.remove('new-tile'), 300);
     }
 }
 
-function updateGrid() {
+function ug() {
     const cells = document.querySelectorAll('.cell');
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-            const cellIndex = i * 4 + j;
-            cells[cellIndex].textContent = grid[i][j] || '';
-            cells[cellIndex].style.backgroundColor = getColor(grid[i][j]);
+            const ci = i * 4 + j;
+            cells[ci].textContent = g[i][j] || '';
+            cells[ci].style.backgroundColor = gc(g[i][j]);
         }
     }
-    document.getElementById('score').textContent = score;
+    document.getElementById('score').textContent = s;
 }
 
-function getColor(value) {
+function gc(value) {
     const colors = {
         2: '#eee4da',
         4: '#ede0c8',
@@ -57,91 +57,90 @@ function getColor(value) {
     return colors[value] || '#cdc1b4';
 }
 
-function move(direction) {
-    let moved = false;
-    const newGrid = JSON.parse(JSON.stringify(grid));
-    let mergedCells = [];
+function move(dc) {
+    let md = false;
+    const ng = JSON.parse(JSON.stringify(g));
+    let mc = [];
 
-    if (direction === 'left') {
+    if (dc === 'left') {
         for (let i = 0; i < 4; i++) {
-            let { newRow, mergedIndices } = pushLeft(newGrid[i]);
-            newGrid[i] = newRow;
-            mergedCells = mergedCells.concat(mergedIndices.map(j => ({i, j})));
+            let { nr, mds } = pl(ng[i]);
+            ng[i] = nr;
+            mc = mc.concat(mds.map(j => ({i, j})));
         }
-    } else if (direction === 'right') {
+    } else if (dc === 'right') {
         for (let i = 0; i < 4; i++) {
-            let { newRow, mergedIndices } = pushLeft(newGrid[i].reverse());
-            newGrid[i] = newRow.reverse();
-            mergedCells = mergedCells.concat(mergedIndices.map(j => ({i, j: 3-j})));
+            let { nr, mds } = pl(ng[i].reverse());
+            ng[i] = nr.reverse();
+            mc = mc.concat(mds.map(j => ({i, j: 3-j})));
         }
-    } else if (direction === 'up') {
+    } else if (dc === 'up') {
         for (let j = 0; j < 4; j++) {
-            let column = [newGrid[0][j], newGrid[1][j], newGrid[2][j], newGrid[3][j]];
-            let { newRow, mergedIndices } = pushLeft(column);
+            let column = [ng[0][j], ng[1][j], ng[2][j], ng[3][j]];
+            let { nr, mds } = pl(column);
             for (let i = 0; i < 4; i++) {
-                newGrid[i][j] = newRow[i];
+                ng[i][j] = nr[i];
             }
-            mergedCells = mergedCells.concat(mergedIndices.map(i => ({i, j})));
+            mc = mc.concat(mds.map(i => ({i, j})));
         }
-    } else if (direction === 'down') {
+    } else if (dc === 'down') {
         for (let j = 0; j < 4; j++) {
-            let column = [newGrid[0][j], newGrid[1][j], newGrid[2][j], newGrid[3][j]];
-            let { newRow, mergedIndices } = pushLeft(column.reverse());
-            newRow = newRow.reverse();
+            let column = [ng[0][j], ng[1][j], ng[2][j], ng[3][j]];
+            let { nr, mds } = pl(column.reverse());
+            nr = nr.reverse();
             for (let i = 0; i < 4; i++) {
-                newGrid[i][j] = newRow[i];
+                ng[i][j] = nr[i];
             }
-            mergedCells = mergedCells.concat(mergedIndices.map(i => ({i: 3-i, j})));
+            mc = mc.concat(mds.map(i => ({i: 3-i, j})));
         }
     }
 
-    if (JSON.stringify(grid) !== JSON.stringify(newGrid)) {
-        moved = true;
-        grid = newGrid;
-        addNewTile();
-        updateGrid();
+    if (JSON.stringify(g) !== JSON.stringify(ng)) {
+        md = true;
+        g = ng;
+        ant();
+        ug();
         
-        // Apply merged animation
-        mergedCells.forEach(({i, j}) => {
-            const cellIndex = i * 4 + j;
-            const cell = document.querySelectorAll('.cell')[cellIndex];
+        mc.forEach(({i, j}) => {
+            const ci = i * 4 + j;
+            const cell = document.querySelectorAll('.cell')[ci];
             cell.classList.add('merged');
             setTimeout(() => cell.classList.remove('merged'), 200);
         });
     }
 
-    if (isGameOver()) {
+    if (igo()) {
         alert('게임 오버!');
     }
 }
 
-function pushLeft(row) {
-    let newRow = row.filter(cell => cell !== 0);
-    let mergedIndices = [];
-    for (let i = 0; i < newRow.length - 1; i++) {
-        if (newRow[i] === newRow[i + 1]) {
-            newRow[i] *= 2;
-            score += newRow[i];
-            newRow.splice(i + 1, 1);
-            mergedIndices.push(i);
+function pl(row) {
+    let nr = row.filter(cell => cell !== 0);
+    let mds = [];
+    for (let i = 0; i < nr.length - 1; i++) {
+        if (nr[i] === nr[i + 1]) {
+            nr[i] *= 2;
+            s += nr[i];
+            nr.splice(i + 1, 1);
+            mds.push(i);
         }
     }
-    while (newRow.length < 4) {
-        newRow.push(0);
+    while (nr.length < 4) {
+        nr.push(0);
     }
-    return { newRow, mergedIndices };
+    return { nr, mds };
 }
 
-function isGameOver() {
+function igo() {
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-            if (grid[i][j] === 0) {
+            if (g[i][j] === 0) {
                 return false;
             }
-            if (i < 3 && grid[i][j] === grid[i + 1][j]) {
+            if (i < 3 && g[i][j] === g[i + 1][j]) {
                 return false;
             }
-            if (j < 3 && grid[i][j] === grid[i][j + 1]) {
+            if (j < 3 && g[i][j] === g[i][j + 1]) {
                 return false;
             }
         }
@@ -166,4 +165,4 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-initGame();
+ig();

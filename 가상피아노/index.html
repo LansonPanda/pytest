@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>가상피아노</title>
+    <script>
+        function playSound(freq) {
+            var context = new AudioContext()
+            var o = context.createOscillator()
+            var frequency = frequency
+            o.type = "sine"
+            o.frequency.value = freq;
+            o.connect(context.destination)
+            o.start()
+            setTimeout(function () {
+                o.stop()
+            }, 300)
+        }
+    
+        window.addEventListener("keydown", function (e) {
+            if (e.keyCode == 65) {
+                playSound(261.63)
+            } else if (e.keyCode == 83) {
+                playSound(293.66)
+            } else if (e.keyCode == 68) {
+                playSound(329.63)
+            } else if (e.keyCode == 70) {
+                playSound(349.23)
+            } else if (e.keyCode == 71) {
+                playSound(392.00)
+            } else if (e.keyCode == 72) {
+                playSound(440.00)
+            } else if (e.keyCode == 74) {
+                playSound(493.88)
+            } else if (e.keyCode == 75) {
+                playSound(523.25)
+            }
+        })
+    </script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>로또 테스트기</title>
+    <style>
+        input[type="checkbox"] {
+            width: 20px;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        #firstPrize:hover::after {
+            content: '- 당청금 : 2,404,951,807원';
+        }
+        #secondPrize:hover::after {
+            content: '- 당청금 : 60,398,334원';
+        }
+        #thirdPrize:hover::after {
+            content: '- 당청금 : 1,428,736원';
+        }
+        #fourthPrize:hover::after {
+            content: '- 당청금 : 50,000원';
+        }
+        #fifthPrize:hover::after {
+            content: '- 당청금 : 5,000원';
+        }
+    </style>
+    </script>
+</head>
+<body>
+    <h1 class="lotto-title">로또 테스트기</h1>
+    <form>
+        <div>
+            <label for="winningNumbers">당첨번호:</label>
+            <input type="text" id="winningNumbers" name="winningNumbers">
+        </div>
+        <div>
+            <label>선택한 숫자는 제외</label>
+        </div>
+        <div>
+            <label><input type="checkbox" value="1"> 1</label>
+            <label><input type="checkbox" value="2"> 2</label>
+            <label><input type="checkbox" value="3"> 3</label>
+            <label><input type="checkbox" value="4"> 4</label>
+            <label><input type="checkbox" value="5"> 5</label>
+            <label><input type="checkbox" value="6"> 6</label>
+            <label><input type="checkbox" value="7"> 7</label>
+            <label><input type="checkbox" value="8"> 8</label>
+            <label><input type="checkbox" value="9"> 9</label>
+            <label><input type="checkbox" value="10"> 10</label>
+        </div>
+        <div>
+            <label><input type="checkbox" value="11"> 11</label>
+            <label><input type="checkbox" value="12"> 12</label>
+            <label><input type="checkbox" value="13"> 13</label>
+            <label><input type="checkbox" value="14"> 14</label>
+            <label><input type="checkbox" value="15"> 15</label>
+            <label><input type="checkbox" value="16"> 16</label>
+            <label><input type="checkbox" value="17"> 17</label>
+            <label><input type="checkbox" value="18"> 18</label>
+            <label><input type="checkbox" value="19"> 19</label>
+            <label><input type="checkbox" value="20"> 20</label>
+        </div>
+        <div>
+            <label><input type="checkbox" value="21"> 21</label>
+            <label><input type="checkbox" value="22"> 22</label>
+            <label><input type="checkbox" value="23"> 23</label>
+            <label><input type="checkbox" value="24"> 24</label>
+            <label><input type="checkbox" value="25"> 25</label>
+            <label><input type="checkbox" value="26"> 26</label>
+            <label><input type="checkbox" value="27"> 27</label>
+            <label><input type="checkbox" value="28"> 28</label>
+            <label><input type="checkbox" value="29"> 29</label>
+            <label><input type="checkbox" value="30"> 30</label>
+        </div>
+        <div>
+            <label><input type="checkbox" value="31"> 31</label>
+            <label><input type="checkbox" value="32"> 32</label>
+            <label><input type="checkbox" value="33"> 33</label>
+            <label><input type="checkbox" value="34"> 34</label>
+            <label><input type="checkbox" value="35"> 35</label>
+            <label><input type="checkbox" value="36"> 36</label>
+            <label><input type="checkbox" value="37"> 37</label>
+            <label><input type="checkbox" value="38"> 38</label>
+            <label><input type="checkbox" value="39"> 39</label>
+            <label><input type="checkbox" value="40"> 40</label>
+        </div>
+        <div>
+            <label><input type="checkbox" value="41"> 41</label>
+            <label><input type="checkbox" value="42"> 42</label>
+            <label><input type="checkbox" value="43"> 43</label>
+            <label><input type="checkbox" value="44"> 44</label>
+            <label><input type="checkbox" value="45"> 45</label>
+        </div>
+        <div>
+            <label for="quantity">추출할 횟수:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="10000" value="1">
+        </div>
+        <div>
+            <label for="total">추출 횟수 / 지출 금액:</label>
+            <span id="total">0회 / 0원</span>
+        </div>
+        <div>
+            <label for="firstPrize">1등 당첨 횟수:</label>
+            <span id="firstPrize">0</span>
+        </div>
+        <div>
+            <label for="secondPrize">2등 당첨 횟수:</label>
+            <span id="secondPrize">0</span>
+        </div>
+        <div>
+            <label for="thirdPrize">3등 당첨 횟수:</label>
+            <span id="thirdPrize">0</span>
+        </div>
+        <div>
+            <label for="fourthPrize">4등 당첨 횟수:</label>
+            <span id="fourthPrize">0</span>
+        </div>
+        <div>
+            <label for="fifthPrize">5등 당첨 횟수:</label>
+            <span id="fifthPrize">0</span>
+        </div>
+        <div>
+            <label for="winnings">당첨금:</label>
+            <span id="winnings">0</span>
+        </div>
+        <div>
+            <label for="returnRate">회수율:</label>
+            <span id="returnRate">0%</span>
+        </div>
+        <button type="button" onclick="generateAndPrintLottoNumbers()">로또 번호 추출</button>
+        <label><input type="checkbox" value="hideNumbers">번호 숨기기</label>
+        <div id="result"></div>
+    </form>
+</body>
+</html>

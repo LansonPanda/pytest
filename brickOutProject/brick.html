@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brickOut</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js" defer></script>
+    <script type="module" src="bricks.js" defer></script>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="mapSelection">
+        <button id="map1Btn">Map 1</button>
+        <button id="map2Btn">Map 2</button>
+        <button id="map3Btn">Map 3</button>
+        <!-- Add more buttons for additional maps -->
+    </div>
+
+    <script type="module">
+        import { startGame } from './script.js';
+        document.getElementById('map1Btn').addEventListener('click', () => startGame(1));
+        document.getElementById('map2Btn').addEventListener('click', () => startGame(2));
+        document.getElementById('map3Btn').addEventListener('click', () => startGame(3));
+    </script>
+</body>
+</html>

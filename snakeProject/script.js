@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById('score');
 
 const gridSize = 30;
-const tileCount = 10;
+const tileCount = 5;
 canvas.width = canvas.height = gridSize * tileCount;
 
 let snake = [

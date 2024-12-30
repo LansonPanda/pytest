@@ -240,6 +240,7 @@ class Tetris {
                 this.sttp + this.bY * this.cs,
                 this.cB, this.bA, this.stc);
         }
+
         this.gs = this.increaseSpeed(this.dl);
         // fall 수정
         this.timerId = setTimeout(() => {
@@ -250,7 +251,10 @@ class Tetris {
 
     increaseSpeed(dl) {
         let levelsElem = document.getElementById("level");
-        if (dl >= 95) {
+        if (dl >= 140) {
+            levelsElem.innerText = " " + 7;
+            return 75;
+        } else if (dl >= 95) {
             levelsElem.innerText = " " + 6;
             return 100;
         } else if (dl >= 60) {
@@ -274,8 +278,10 @@ class Tetris {
 
     // ++
     nextLevel(dl) {
-        if (dl >= 95) {
-            return 0;
+        if (dl >= 140) {
+            return 'final';
+        } else if (dl >= 95) {
+            return 140 - dl;
         } else if (dl >= 60) {
             return 95 - dl;
         } else if (dl >= 45) {
@@ -303,7 +309,6 @@ class Tetris {
         if (this.holdUsed === 1) {
             this.holdUsed = 0;
         }
-
 
         if (!this.cbm(this.bX, this.bY, this.cB, this.bA)) {
             let messageElem = document.getElementById("message");
@@ -580,4 +585,3 @@ class Tetris {
         }
     } 
 }
-    

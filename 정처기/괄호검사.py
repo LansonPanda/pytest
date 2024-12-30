@@ -1,4 +1,4 @@
-data = "()()"
+data = "()())"
 top = -1
 stack = []
 for now in range(len(data)):

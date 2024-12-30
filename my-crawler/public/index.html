@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹 크롤러</title>
+</head>
+<body>
+  <h1>웹 크롤러</h1>
+  <form id="crawl-form">
+    <label for="url">크롤링할 URL 입력:</label>
+    <input type="text" id="url" name="url" required>
+    <button type="submit">크롤링</button>
+  </form>
+  <div id="result">
+    <h2>크롤링 결과</h2>
+    <p><strong>타이틀:</strong> <span id="title"></span></p>
+  </div>
+
+  <script>
+    document.getElementById('crawl-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = document.getElementById('url').value;
+      var inputnumber = '500';
+
+      try {
+        const urlObj = new URL(url);
+        const response = await fetch(`/crawl?url=${encodeURIComponent(urlObj)}/${inputnumber}`);
+        const data = await response.json();
+
+        if (data.error) {
+          document.getElementById('title').textContent = '오류: ' + data.error;
+        } else {
+          document.getElementById('title').textContent = data.nums;
+        }
+      } catch (error) {
+        document.getElementById('title').textContent = '크롤링 오류가 발생했습니다.';
+      }
+    });
+  </script>
+</body>
+</html>

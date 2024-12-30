@@ -43,11 +43,9 @@ body {
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
-
 .new-tile {
     animation: appear 0.2s ease-in-out;
 }
-
 .merged {
     animation: pop 0.2s ease-in-out;
 }
